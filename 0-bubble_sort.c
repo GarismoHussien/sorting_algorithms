@@ -1,46 +1,33 @@
-nclude "sort.h"
-
+#include "sort.h"
 /**
- * swap_ints -ithis to Swap two integers in an array.
- * @a: this  is the first integer to swap.
- * @b: this is the second integer to swap.
- */
-void swap_ints(int *a, int *b)
-{
-	int tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-/**
- * bubble_sort -this is Sort an array of integers in ascending order.
- * @array: this is An array of integers to sort.
- * @size: this is The size of the array.
+ *bubble_sort - FFunction sorts  array of ints
+ *using bubble sortt algorithmm
  *
- * Description: this is to Print the array after each swap.
+ *@array: array of iints
+ *@size: size of array
+ *
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, len = size;
-	bool bubbly = false;
+	int temp;
+	size_t i, k;
 
-	if (array == NULL || size < 2)
+	if (!array || !size)
 		return;
 
-	while (bubbly == false)
+	i = 0;
+	while (i < size)
 	{
-		bubbly = true;
-		for (i = 0; i < len - 1; i++)
+		for (k = 0; k < size - 1; k++)
 		{
-			if (array[i] > array[i + 1])
+			if (array[k] > array[k + 1])
 			{
-				swap_ints(array + i, array + i + 1);
+				temp = array[k];
+				array[k] = array[k + 1];
+				array[k + 1] = temp;
 				print_array(array, size);
-				bubbly = false;
 			}
 		}
-		len--;
+		i++;
 	}
 }
