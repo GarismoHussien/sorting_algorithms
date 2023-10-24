@@ -1,38 +1,6 @@
 #include "sort.h"
 
 /**
- * quick_sort_hoare - to sort an array with the Quicksort algorithm
- * @array: this is the array of ints to sort
- * @size: this is the size of the array
- */
-void quick_sort_hoare(int *array, size_t size)
-{
-	if (size < 2)
-		return;
-
-	quick_recursion(array, 0, (int)size - 1, size);
-}
-
-/**
- * quick_recursion - the helper function for Quicksort
- * @array: this is the array to sort
- * @left: this is the index of the left element
- * @right: this is the index of the right element
- * @size: this is the size of the array
- */
-void quick_recursion(int *array, int left, int right, size_t size)
-{
-	int piv;
-
-	if (left < right)
-	{
-		piv = partition(array, left, right, size);
-		quick_recursion(array, left, piv - 1, size);
-		quick_recursion(array, piv, right, size);
-	}
-}
-
-/**
  * partition - this is to give a piv index for Quicksort
  * @array: this is the array to find the piv in
  * @left: this is the index of the left element
@@ -67,4 +35,36 @@ int partition(int *array, int left, int right, size_t size)
 		}
 	}
 	return (0);
+}
+
+/**
+ * quick_recursion - the helper function for Quicksort
+ * @array: this is the array to sort
+ * @left: this is the index of the left element
+ * @right: this is the index of the right element
+ * @size: this is the size of the array
+ */
+void quick_recursion(int *array, int left, int right, size_t size)
+{
+        int piv;
+
+        if (left < right)
+        {
+                piv = partition(array, left, right, size);
+                quick_recursion(array, left, piv - 1, size);
+                quick_recursion(array, piv, right, size);
+        }
+}
+
+/**
+ * quick_sort_hoare - to sort an array with the Quicksort algorithm
+ * @array: this is the array of ints to sort
+ * @size: this is the size of the array
+ */
+void quick_sort_hoare(int *array, size_t size)
+{
+        if (size < 2)
+                return;
+
+        quick_recursion(array, 0, (int)size - 1, size);
 }
