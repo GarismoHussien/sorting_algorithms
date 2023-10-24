@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-
+#include "sort.h"
 
 /**
  * print_array -to  Print an array of integers
